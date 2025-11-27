@@ -13,8 +13,9 @@ export default function CodeEditor({ fileName, content, language }: CodeEditorPr
 
     const renderContent = () => {
         if (language === 'markdown') {
+            const isReadme = fileName.toLowerCase().includes('readme');
             return (
-                <div className="markdown-content">
+                <div className={`markdown-content ${isReadme ? 'readme-signature' : ''}`}>
                     {renderMarkdown(content)}
                 </div>
             );
