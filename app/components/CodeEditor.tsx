@@ -1,5 +1,7 @@
 'use client';
 
+import React from 'react';
+
 interface CodeEditorProps {
     fileName: string;
     content: string;
@@ -40,8 +42,8 @@ export default function CodeEditor({ fileName, content, language }: CodeEditorPr
 
     const renderMarkdown = (text: string) => {
         const parts = text.split('\n');
-        const elements: JSX.Element[] = [];
-        let listItems: JSX.Element[] = [];
+        const elements: React.JSX.Element[] = [];
+        let listItems: React.JSX.Element[] = [];
         let key = 0;
 
         const flushList = () => {
@@ -80,7 +82,7 @@ export default function CodeEditor({ fileName, content, language }: CodeEditorPr
     };
 
     const parseInlineMarkdown = (text: string) => {
-        const parts: (string | JSX.Element)[] = [];
+        const parts: (string | React.JSX.Element)[] = [];
         let currentText = text;
         let key = 0;
 
@@ -120,8 +122,8 @@ export default function CodeEditor({ fileName, content, language }: CodeEditorPr
         return parts.length > 0 ? parts : currentText;
     };
 
-    const parseBoldText = (text: string, startKey: number): (string | JSX.Element)[] => {
-        const parts: (string | JSX.Element)[] = [];
+    const parseBoldText = (text: string, startKey: number): (string | React.JSX.Element)[] => {
+        const parts: (string | React.JSX.Element)[] = [];
         const boldRegex = /\*\*([^*]+)\*\*/g;
         let lastIndex = 0;
         let match;

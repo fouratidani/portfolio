@@ -15,7 +15,8 @@
 
 # next.js
 /.next/
-/out/
+# /out/
+# Note: /docs is our build output (distDir) and must be committed for GitHub Pages
 
 # production
 /build
