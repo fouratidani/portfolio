@@ -1,11 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: 'export',
-  distDir: 'docs',
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',        // This enables static export
+  distDir: 'docs',         // Output to /docs folder for GitHub Pages
   images: {
-    unoptimized: true,
+    unoptimized: true,     // Required for GitHub Pages
   },
+  trailingSlash: true,     // Avoid routing issues on GitHub Pages
 };
 
-export default nextConfig;
+module.exports = nextConfig;
