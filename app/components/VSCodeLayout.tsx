@@ -89,6 +89,34 @@ I approach every project with:
 - **Team Collaboration**: Working effectively with diverse teams to achieve common goals
 - **Problem Solving**: Finding creative solutions to complex technical challenges
 
+## Professional Experience
+
+### EasyBank | Information Technology Developer (Internship)
+*Nov 2025 - Present*
+- Contribute to the design, development, and improvement of digital financial solutions within a modern, fast-paced fintech environment
+- Focus on building reliable and scalable features that enhance the user experience
+- Support the company’s mission of delivering secure and accessible digital banking services
+
+### OORB Open Organic Robotics | Graphic Designer (Internship)
+*Jul 2025 - Sep 2025*
+- Contributed to both graphic design and community management by creating engaging visual content
+- Developed branding assets and managed online communications
+- Worked on building awareness of the startup’s vision in robotics and innovation
+- Fostered an active community through content creation and social media management
+
+### Orange Digital Center Tunisie | Full-stack Developer (Internship)
+*Jul 2025 - Aug 2025*
+- Worked with an amazing team to build innovative digital solutions
+- Gained hands-on experience in full-stack development using React.js, NestJS, Node.js, and PostgreSQL
+- Used Tailwind CSS to design responsive, user-friendly interfaces
+- Sharpened technical skills and improved problem-solving abilities
+- Contributed to the development of scalable, high-performance web applications
+
+### Digit-R | Frontend Developer (Internship)
+*Aug 2024 - Sep 2024*
+- Collaborated with other interns on a project using React as the main framework and Node.js
+- Developed frontend components and features
+
 ## Benevolent Experience
 
 ### IEEE Leadership Roles
@@ -144,8 +172,8 @@ I approach every project with:
         ]
       }, null, 2),
     },
-    'projects.tsx': {
-      name: 'projects.tsx',
+    'experience.tsx': {
+      name: 'experience.tsx',
       language: 'tsx',
       content: `interface Experience {
   id: number;
@@ -160,52 +188,57 @@ I approach every project with:
 const experience: Experience[] = [
   {
     id: 1,
-    company: "WinToWin",
-    role: "Web Developer (Freelance)",
-    period: "Sep-Oct 2025",
-    type: "freelance",
+    company: "EasyBank",
+    role: "Information Technology Developer",
+    period: "Nov 2025 - Present",
+    type: "internship",
     description: [
-      "Developed SEO-optimized web apps using Next.js and reusable components",
-      "Collaborated with clients to meet branding and functionality needs"
+      "Contribute to the design, development, and improvement of digital financial solutions within a modern, fast-paced fintech environment",
+      "Focus on building reliable and scalable features that enhance the user experience",
+      "Support the company’s mission of delivering secure and accessible digital banking services"
     ],
-    technologies: ["Next.js", "React", "SEO", "Component Design"]
+    technologies: ["TypeScript", "Next.js"]
   },
   {
     id: 2,
-    company: "Groupe Étoile Formation",
-    role: "Mobile Developer (Freelance)",
-    period: "Jul 2025-Ongoing",
-    type: "freelance",
+    company: "OORB Open Organic Robotics",
+    role: "Graphic Designer",
+    period: "Jul 2025 - Sep 2025",
+    type: "internship",
     description: [
-      "Created React Native app for managing training sessions and student progress",
-      "Integrated REST APIs and optimized mobile UI/UX across platforms"
+      "Contributed to both graphic design and community management by creating engaging visual content",
+      "Developed branding assets and managed online communications",
+      "Worked on building awareness of the startup’s vision in robotics and innovation",
+      "Fostered an active community through content creation and social media management"
     ],
-    technologies: ["React Native", "REST APIs", "Mobile UI/UX"]
+    technologies: ["Community Management", "Graphic Design"]
   },
   {
     id: 3,
-    company: "Orange Digital Center",
-    role: "Full-Stack Developer Intern",
-    period: "Jul-Sep 2025",
+    company: "Orange Digital Center Tunisie",
+    role: "Full-stack Developer",
+    period: "Jul 2025 - Aug 2025",
     type: "internship",
     description: [
-      "Contributed to full-stack development using React.js, NestJS, and PostgreSQL",
-      "Designed responsive UIs with Tailwind CSS and optimized front-end performance",
-      "Collaborated with developers to deploy scalable, high-performance apps"
+      "Worked with an amazing team to build innovative digital solutions",
+      "Gained hands-on experience in full-stack development using React.js, NestJS, Node.js, and PostgreSQL",
+      "Used Tailwind CSS to design responsive, user-friendly interfaces",
+      "Sharpened technical skills and improved problem-solving abilities",
+      "Contributed to the development of scalable, high-performance web applications"
     ],
-    technologies: ["React.js", "NestJS", "PostgreSQL", "Tailwind CSS"]
+    technologies: ["React.js", "NestJS", "Node.js", "PostgreSQL", "Tailwind CSS"]
   },
   {
     id: 4,
     company: "Digit-R",
-    role: "Front-End Developer Intern",
-    period: "Aug-Sep 2024",
+    role: "Frontend Developer",
+    period: "Aug 2024 - Sep 2024",
     type: "internship",
     description: [
-      "Built and styled React components and improved accessibility",
-      "Worked on UI enhancements and code reviews for web performance"
+      "Collaborated with other interns on a project using React as the main framework and Node.js",
+      "Developed frontend components and features"
     ],
-    technologies: ["React", "Component Development", "Accessibility", "Performance Optimization"]
+    technologies: ["React.js", "Node.js"]
   }
 ];
 
@@ -218,6 +251,93 @@ export default function ExperienceShowcase() {
       ))}
     </div>
   );
+}`,
+    },
+    'projects.tsx': {
+      name: 'projects.tsx',
+      language: 'tsx',
+      content: `export default function Projects() {
+    const projects = [
+        {
+            title: 'University Student Management Cross Platform App (ISEPSI)',
+            description: 'A cross-platform mobile application for managing university student data, schedules, and grades for ISEPSI.',
+            tags: ['Flutter', 'Firebase', 'Dart', 'Android/iOS'],
+            gradient: 'from-blue-600 to-cyan-500',
+        },
+        {
+            title: 'HR Platform (SNSCL)',
+            description: 'A comprehensive Human Resources platform for SNSCL to streamline employee management, payroll, and recruitment processes.',
+            tags: ['React', 'Node.js', 'MongoDB', 'Express'],
+            gradient: 'from-emerald-500 to-teal-500',
+        },
+        {
+            title: 'Drone Controller (IEEE AESS ESSTHS SBC)',
+            description: 'Custom drone controller software developed for the IEEE AESS ESSTHS Student Branch Chapter, featuring real-time telemetry and flight modes.',
+            tags: ['C++', 'Python', 'Embedded Systems', 'IoT'],
+            gradient: 'from-red-500 to-orange-500',
+        },
+        {
+            title: 'AI Quiz Generator from PDF (ISITCOM)',
+            description: 'An AI-powered tool that automatically generates quizzes and assessments from PDF course materials for ISITCOM students.',
+            tags: ['Python', 'OpenAI API', 'LangChain', 'Streamlit'],
+            gradient: 'from-violet-600 to-purple-500',
+        },
+        {
+            title: 'IEEE Tunisia Section Event Tool Box',
+            description: 'A suite of digital tools to assist in the organization and management of IEEE Tunisia Section events and conferences.',
+            tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+            gradient: 'from-yellow-500 to-amber-500',
+        },
+    ];
+
+    return (
+        <section id="projects" className="py-20 bg-white">
+            <div className="container mx-auto px-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900">
+                    Featured Projects
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {projects.map((project, idx) => (
+                        <div
+                            key={idx}
+                            className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                        >
+                            {/* Gradient Header */}
+                            <div className={\`h-48 bg-gradient-to-br \${project.gradient} relative overflow-hidden\`}>
+                                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="w-20 h-20 bg-white/20 rounded-full backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-6">
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
+                                <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+
+                                {/* Tags */}
+                                <div className="flex flex-wrap gap-2">
+                                    {project.tags.map((tag, tagIdx) => (
+                                        <span
+                                            key={tagIdx}
+                                            className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 }`,
     },
     'contact.ts': {
@@ -414,7 +534,8 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`,
       { name: 'Home', file: 'README.md', icon: <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /> },
       { name: 'About', file: 'about.md', icon: <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /> },
       { name: 'Skills', file: 'skills.json', icon: <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" /> },
-      { name: 'Work', file: 'projects.tsx', icon: <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" /> },
+      { name: 'Experience', file: 'experience.tsx', icon: <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" /> },
+      { name: 'Projects', file: 'projects.tsx', icon: <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" /> },
       { name: 'Contact', file: 'contact.ts', icon: <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /> },
     ];
 

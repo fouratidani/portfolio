@@ -219,20 +219,121 @@ export default function CodeEditor({ fileName, content, language }: CodeEditorPr
     };
 
     const renderTypeScript = (text: string) => {
-        const keywords = ['interface', 'const', 'let', 'var', 'function', 'return', 'import', 'export', 'type', 'class', 'extends', 'implements'];
-
         return text.split('\n').map((line, i) => {
-            let highlighted = line;
+            // If line is empty, return empty div
+            if (!line) return <div key={i}>&nbsp;</div>;
 
-            keywords.forEach(keyword => {
-                const regex = new RegExp(`\\b${keyword}\\b`, 'g');
-                highlighted = highlighted.replace(regex, `<span className="keyword">${keyword}</span>`);
-            });
+            // Tokenize the line
+            const tokens: { type: string; value: string }[] = [];
+            let remaining = line;
 
-            highlighted = highlighted.replace(/(["` ])(.*?)\1/g, '<span className="string">$1$2$1</span>');
-            highlighted = highlighted.replace(/(\/\/.*$)/g, '<span className="comment">$1</span>');
+            while (remaining.length > 0) {
+                // Comments
+                if (remaining.match(/^\s*\/\/.*/)) {
+                    tokens.push({ type: 'comment', value: remaining });
+                    remaining = '';
+                    continue;
+                }
 
-            return <div key={i} dangerouslySetInnerHTML={{ __html: highlighted }} />;
+                // Strings (single, double, backtick)
+                const stringMatch = remaining.match(/^(['"`])(.*?)\1/);
+                if (stringMatch) {
+                    tokens.push({ type: 'string', value: stringMatch[0] });
+                    remaining = remaining.slice(stringMatch[0].length);
+                    continue;
+                }
+
+                // Keywords
+                const keywords = /^(interface|const|let|var|function|return|import|export|type|class|extends|implements|from|default)\b/;
+                const keywordMatch = remaining.match(keywords);
+                if (keywordMatch) {
+                    tokens.push({ type: 'keyword', value: keywordMatch[0] });
+                    remaining = remaining.slice(keywordMatch[0].length);
+                    continue;
+                }
+
+                // Booleans
+                const booleans = /^(true|false)\b/;
+                const booleanMatch = remaining.match(booleans);
+                if (booleanMatch) {
+                    tokens.push({ type: 'boolean', value: booleanMatch[0] });
+                    remaining = remaining.slice(booleanMatch[0].length);
+                    continue;
+                }
+
+                // Numbers
+                const numbers = /^\d+(\.\d+)?/;
+                const numberMatch = remaining.match(numbers);
+                if (numberMatch) {
+                    tokens.push({ type: 'number', value: numberMatch[0] });
+                    remaining = remaining.slice(numberMatch[0].length);
+                    continue;
+                }
+
+                // Object keys (word followed by colon)
+                const keyMatch = remaining.match(/^([a-zA-Z_$][a-zA-Z0-9_$]*)(?=:)/);
+                if (keyMatch) {
+                    tokens.push({ type: 'property', value: keyMatch[0] });
+                    remaining = remaining.slice(keyMatch[0].length);
+                    continue;
+                }
+
+                // Function calls
+                const funcMatch = remaining.match(/^([a-zA-Z_$][a-zA-Z0-9_$]*)(?=\()/);
+                if (funcMatch) {
+                    tokens.push({ type: 'function', value: funcMatch[0] });
+                    remaining = remaining.slice(funcMatch[0].length);
+                    continue;
+                }
+
+                // Types/Classes (Capitalized words)
+                const typeMatch = remaining.match(/^[A-Z][a-zA-Z0-9_$]*/);
+                if (typeMatch) {
+                    tokens.push({ type: 'type', value: typeMatch[0] });
+                    remaining = remaining.slice(typeMatch[0].length);
+                    continue;
+                }
+
+                // Regular words/identifiers
+                const wordMatch = remaining.match(/^[a-zA-Z_$][a-zA-Z0-9_$]*/);
+                if (wordMatch) {
+                    tokens.push({ type: 'variable', value: wordMatch[0] });
+                    remaining = remaining.slice(wordMatch[0].length);
+                    continue;
+                }
+
+                // Whitespace
+                const spaceMatch = remaining.match(/^\s+/);
+                if (spaceMatch) {
+                    tokens.push({ type: 'whitespace', value: spaceMatch[0] });
+                    remaining = remaining.slice(spaceMatch[0].length);
+                    continue;
+                }
+
+                // Operators/Punctuation (take one char)
+                tokens.push({ type: 'punctuation', value: remaining[0] });
+                remaining = remaining.slice(1);
+            }
+
+            return (
+                <div key={i}>
+                    {tokens.map((token, idx) => {
+                        let className = '';
+                        switch (token.type) {
+                            case 'keyword': className = 'keyword'; break;
+                            case 'string': className = 'string'; break;
+                            case 'comment': className = 'comment'; break;
+                            case 'number': className = 'number'; break;
+                            case 'boolean': className = 'boolean'; break;
+                            case 'property': className = 'property'; break;
+                            case 'function': className = 'function'; break;
+                            case 'type': className = 'type'; break;
+                            default: className = '';
+                        }
+                        return <span key={idx} className={className}>{token.value}</span>;
+                    })}
+                </div>
+            );
         });
     };
 

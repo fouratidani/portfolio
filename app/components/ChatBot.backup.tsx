@@ -35,27 +35,27 @@ export default function ChatBot() {
         },
         {
             keywords: ['projects', 'portfolio', 'work', 'built', 'created'],
-            response: "Fourat has worked on various projects including an E-Commerce Platform with Next.js, a comprehensive Design System, an Analytics Dashboard with real-time data visualization, and a SaaS Platform serving 1000+ users. Check out the projects.tsx file for more details!"
+            response: "Fourat has worked on various projects including an HR Platform with Next.js, a comprehensive Design System, an Analytics Dashboard with real-time data visualization, and a SaaS Platform serving 1000+ users. Check out the projects.tsx file for more details!"
         },
         {
             keywords: ['experience', 'years', 'background', 'career'],
-            response: "Fourat has 5+ years of development experience, has completed 50+ projects, and worked with 30+ happy clients. He specializes in creating seamless digital experiences that combine beautiful design with robust functionality."
+            response: "Fourat has 5+ years of development experience, has completed 20+ projects, and worked with 10+ happy clients. He specializes in creating seamless digital experiences that combine beautiful design with robust functionality."
         },
         {
             keywords: ['contact', 'email', 'reach', 'hire', 'available'],
-            response: "You can reach Fourat at contact@fouratidani.com or connect on LinkedIn at linkedin.com/in/fourat-idani. He's currently open to new opportunities and available for remote work worldwide!"
+            response: "You can reach Fourat at fouratidani2@gmail.com or connect on LinkedIn at linkedin.com/in/fourat-idani. He's currently open to new opportunities and available for remote work worldwide!"
         },
         {
             keywords: ['design', 'ui', 'ux', 'designer'],
-            response: "Fourat is also a skilled Graphic Designer and UI/UX Designer! He uses tools like Figma, Adobe XD, Illustrator, and Photoshop. His design proficiency is rated at 92%, and he's created complete brand identity packages and mobile app designs."
+            response: "Fourat is also a skilled Graphic Designer and UI/UX Designer! He uses tools like Figma, Adobe XD, Illustrator, and Photoshop. His design proficiency is rated at 70%, and he's created complete brand identity packages and mobile app designs."
         },
         {
             keywords: ['frontend', 'front-end', 'react', 'nextjs'],
-            response: "Fourat's frontend skills include React, Next.js, Vue.js, TypeScript, and modern CSS frameworks like Tailwind CSS and Sass. His frontend proficiency is rated at 95%!"
+            response: "Fourat's frontend skills include React, Next.js, JavaScript, TypeScript, and modern CSS frameworks like Tailwind CSS and Sass. His frontend proficiency is rated at 80%!"
         },
         {
             keywords: ['backend', 'back-end', 'server', 'api'],
-            response: "On the backend, Fourat works with Node.js, Python, and Java. He's experienced with Express, Django, Spring Boot, and databases like PostgreSQL, MongoDB, and Redis. Backend proficiency: 88%."
+            response: "On the backend, Fourat works with Node.js, Python, and Java. He's experienced with Express, Nest.js, Spring Boot, and databases like MysSQL, PostgreSQL, MongoDB. Backend proficiency: 88%."
         },
         {
             keywords: ['hello', 'hi', 'hey', 'greetings'],
