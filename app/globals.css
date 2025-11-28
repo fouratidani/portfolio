@@ -725,45 +725,27 @@ body {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Copilot Panel - Stack Below on Mobile */
-  .copilot-panel {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    border-left: none;
-    border-top: 1px solid var(--border-primary);
+  /* Mobile Layout Updates */
+  .sidebar,
+  .activity-bar,
+  .copilot-panel,
+  .tabs-container {
+    display: none !important;
   }
 
-  /* Sidebar - Full Width on Mobile */
-  .sidebar {
-    width: 100%;
-    left: 0;
-    position: relative;
-  }
-
-  /* Activity Bar - Horizontal on Mobile */
-  .activity-bar {
-    width: 100%;
-    height: 50px;
-    flex-direction: row;
-    border-right: none;
-    border-bottom: 1px solid var(--border-primary);
-  }
-
-  .activity-icon {
-    width: auto;
-    height: 50px;
-    flex: 1;
-  }
-
-  /* Main Content Area - Full Width */
-  .main-content-area {
-    width: 100%;
-  }
-
-  /* VSCode Container - Stack Vertically */
   .vscode-container {
     flex-direction: column;
+    height: calc(100vh - 60px);
+    /* Subtract bottom nav height */
+  }
+
+  .main-content-area {
+    width: 100%;
+    height: 100%;
+  }
+
+  .editor-container {
+    height: 100%;
   }
 
   /* Better Search */
@@ -773,6 +755,52 @@ body {
 
   .search-input {
     font-size: 14px;
+  }
+}
+
+/* Mobile Bottom Navigation */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-primary);
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--text-secondary);
+    font-size: 10px;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--accent-blue);
+  }
+
+  .mobile-nav-item svg {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -943,27 +971,31 @@ body {
 .readme-signature {
   position: relative;
   padding: 20px;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 .readme-signature::before {
   content: '                                                                                                    \A                                                                                                    \A                                                                                                    \A                                                                                                    \A                                                                                                    \A                                                                                                    \A                                                                                                    \A                                                                                                    \A                                          .-++*##**-..                                              \A                                       ..=##%%%%%%%%#*-..                                           \A                                      .:#%%%%%%%%%%%%###=.                                          \A                                      .*%%%%##*#####%%%%#:                                          \A                                      .#%%#*++++==+++*%%%-                                          \A                                      :#%*++++====++++*%%+                                          \A                                      .*#***##***#%###*#%+                                          \A                                      .+###**#*++*###**#%+                                          \A                                       :%**##*+==++++++*##:                                         \A                                       :#*+==++==+++-=+***-                                         \A                                       .**++**###%#*#****+-.                                        \A                                        =***#**#*###%**#+..                                         \A                                        .=#****===+++*##-                                           \A                                          =##*****+++###:                                           \A                                          .+##*****#####:                                           \A                                           .*#%%%%%%%###+=                                          \A                                          :#**########*+=##=.                                       \A                                     ..:=%%###**#####*+-+%%%%%=:..                                  \A                                  .-%%%%%%%#+%#**####+-=*%%%%%%%%%#=.                               \A                              .=*%%%%%%%%%%*-#%#####+::=%%%%%%%%%%%%%%*+..                          \A                           .*%%%%%%%%%%%%%%*-=%###*+#%%+%%%%%%%%%%%%%%%%%#.                         \A                          .*%%%%%%%%%%%%%%%%%+----:=-###%%%%%%%%%%%%%%%%%%:                         \A                          .#%%%%%%%%%%%%%%%*-++-:::+=--#%%%%%%%%%%%%%%%%%%-                         \A                          :%%%%%%%%%%%%%%%%*--#--+#%+:=%%%%%%%%%%%%%%%%%%%*.                        \A                          =%%%%%%%%%%%%%%%%*--*---#=::*%%%%%%%%%%%%%%%%%%%%-                        \A                          =%%%%%%%%%%%%%%%%#--*=-=*::-%%%%%%%%%%%%%%%%%%%%%+                        \A                         .%%%%%%%%%%%%%%%%%#--*+-#-::+%%%%%%%%%%%%%%@%%%%%%%.                       \A                         +%%%%%@%%%%%%%%%%%%--=+-=::-#%%%%%%%%%%@@@@%%%%%%%%=                       \A                        .#%%%%%@@%%%%%%%%%%%=--+=-::-%%%%%%%%%%@@@@@%%%%%%%%*.                      \A                        :%%%%%%@@@%%%%%%%%%%*--==-::*%%%@%%%%@@@@@@@%%%%%%%%#.                      \A                        -%%%%@@@@@@@@@%%%%%%%=-+--:-%%%@%%%%%@@@@@@@%%%%%%%%%:                      \A                        *%%%%@@@@@%@@@@@%@@%%*::--:*%%@@%%%%%@@@@@@@@@%@%%%%%+                      \A                       .%%%%@@@@@@@%%@@@@@@@%%*+---#%@@@%%%%@@@@@@@@@@@@%%%%%#                      \A                       -%%%@@@@@@@@@%%%@@@@@@%%-::=%@@@%%%%@@@@@@@@@@@@%%%%%%%                      \A                      .*%%%%@@@@@@@@@%%%%%@@@@%*::#@@@%%%%%@@@@@@@@@@@@@@%%%%#                      \A                      :%@%%@@@@@@@@@@@@%%%%@@@@%%#@@%%%%%%@@@@@@@@@@@@@@@@@%%#                      \A                      =%%@@@@@@@@%@@@@@@@@%%%@@@%%@@@%%%@@@@@@@@@@@@@@@@@@@@@#.                     \A                     -@@@@@%%%@@@@%@@@@@%%@@@%%@@@@@%%@@@@@@@@@@@@%%@@@@@%%%%@=                     \A                     +%%@@@@@@@@@%@%%@@@@@%%%@@@%*#@@@@@@@%%@@@@@@%#@@%%%@@@@%+                     \A                     -%%%%%%@@@@@%%%%%%%%%%%%%%%%##%%%%%%%%@@@@@@@%-@@@@%%%%%%=                     \A                     -%%@%%%@@@@%%%%%%%%%%%%%%%%@%%%%%%%%%@@@@@@@@@+%%%%%@@@%@-                     \A                     -%%%%@@@@@@@%%%%%%%%%%@%%%@@%%%%%%%%@@@@@%@@@@#@%%%%%%%%%.                     \A                     :%%@@%%%%@@@%%%%%%%%@%%%@@@@%%%%%%@@@@@@@@@@@@%%@%%%%@@@+                      \A                     .%%%%%%@@@@%%%%%%%@@%%@@@@@@@%%@@@@@@@@@%@@@@@%%%%%@%%%%:                      \A                     .#%%%%@@@@@%%%%%%%%%@@@@@@@@@@@@@@@@@@@%@@@@@@%%@%%%@@%#.                      \A                      .*%%%%%%@@%%%%%%@%%%@@@@@#*@@@@@@@@@@@@@@@@@@%%%%%@@@%-                       \A                       +@%%%%%@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%-                        \A                      .#%%%%%%%@@@%@@@@@@@@@@%%%%@@@@@@@@@@@@@@@@%%%%%%@@@%:                        \A                      .*%%%%%%%%%@%%%%%@@@@%%%%%@@@@@@@@@@@%%%@@%%%%%%%@@@=                         \A                       -#%#+:::+%%@%%%%%%%%%%%%%@@@@@@@@@%%%%@@@%%%%%%%@@%                          \A                        .:---::*%%@@%%%%%%%%%%%@@@@@@@@%%%%%@@@%%+:-+#%@@-                          \A                          :=--*%%%%@%%%%%%%%%%%@@@@@%%%%%%@@@@%%%%:---==-.                          \A                          .-*##%%%%@@%%%%%%%%%@@@@@%%%%%%%%%%%%%%%#*==--.                           \A                            .+*%%%%%@@%%%%%%%%@@%@@%%%%%%#####%@@%*###:                             ';
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
   height: 100%;
   font-family: 'Courier New', monospace;
-  font-size: 10px;
-  line-height: 1;
+  font-size: 12px;
+  line-height: 1.1;
   color: var(--text-tertiary);
-  opacity: 0.1;
+  opacity: 0.12;
   pointer-events: none;
   z-index: 0;
   white-space: pre;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .readme-signature>* {
@@ -973,8 +1005,9 @@ body {
 
 @media (max-width: 640px) {
   .readme-signature::before {
-    font-size: 5px;
-    letter-spacing: -0.2px;
+    font-size: 6px;
+    letter-spacing: -0.1px;
+    line-height: 1.05;
   }
 }
 

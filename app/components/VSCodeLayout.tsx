@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MenuBar from './MenuBar';
 import FileExplorer from './FileExplorer';
 import CodeEditor from './CodeEditor';
@@ -20,6 +20,17 @@ export default function VSCodeLayout() {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSidebarPanel, setActiveSidebarPanel] = useState<'explorer' | 'search' | 'source-control' | 'debug' | 'extensions'>('explorer');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile on mount
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const fileContents: { [key: string]: FileContent } = {
     'README.md': {
@@ -28,8 +39,6 @@ export default function VSCodeLayout() {
       content: `# FOURAT IDANI
 
 ## Computer Science Graduate | Full-Stack Developer
-
-**On The Search For An End Of Studies Project Internship**
 
 📧 fouratidani2@gmail.com | 📱 +216 98 365 504  
 🔗 [github.com/fouratidani](https://github.com/fouratidani) | [linkedin.com/in/fourat-idani](https://linkedin.com/in/fourat-idani)
@@ -102,22 +111,22 @@ I approach every project with:
         "technical_skills": {
           "frontend": {
             "frameworks": ["React.js", "Next.js", "React Native"],
-            "languages": ["JavaScript", "HTML5", "CSS3"],
-            "styling": ["Tailwind CSS"]
+            "languages": ["TypeScript", "JavaScript", "HTML5", "CSS3"],
+            "styling": ["Tailwind CSS", "Sass"]
           },
           "backend": {
-            "languages": ["Node.js", "PHP", "Java"],
-            "frameworks": ["Express.js", "NestJS"],
-            "databases": ["SQL", "PostgreSQL"]
+            "languages": ["Node.js", "PHP", "Java", "Python", "C/C++"],
+            "frameworks": ["Express.js", "NestJS", "Spring Boot"],
+            "databases": ["PostgreSQL", "MySQL", "MongoDB"]
           },
           "mobile": {
             "framework": "React Native",
             "focus": "Cross-platform mobile development"
           },
           "tools": {
-            "version_control": ["Git", "GitHub"],
-            "api_testing": ["Postman"],
-            "other": ["VS Code"]
+            "version_control": ["Git", "GitHub", "GitLab"],
+            "design": ["Figma", "Adobe XD"],
+            "other": ["VS Code", "Postman", "Docker"]
           }
         },
         "soft_skills": [
@@ -398,62 +407,93 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`,
     }
   };
 
+  const renderBottomNav = () => {
+    if (!isMobile) return null;
+
+    const navItems = [
+      { name: 'Home', file: 'README.md', icon: <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /> },
+      { name: 'About', file: 'about.md', icon: <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /> },
+      { name: 'Skills', file: 'skills.json', icon: <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" /> },
+      { name: 'Work', file: 'projects.tsx', icon: <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" /> },
+      { name: 'Contact', file: 'contact.ts', icon: <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /> },
+    ];
+
+    return (
+      <div className="mobile-bottom-nav">
+        {navItems.map((item) => (
+          <div
+            key={item.file}
+            className={`mobile-nav-item ${activeFile === item.file ? 'active' : ''}`}
+            onClick={() => setActiveFile(item.file)}
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              {item.icon}
+            </svg>
+            <span>{item.name}</span>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="vscode-wrapper">
-      <MenuBar onMenuAction={handleMenuAction} onSearch={handleSearch} />
+      {!isMobile && <MenuBar onMenuAction={handleMenuAction} onSearch={handleSearch} />}
 
       <div className="vscode-container">
-        {/* Activity Bar */}
-        <div className="activity-bar">
-          <div
-            className={`activity-icon ${activeSidebarPanel === 'explorer' && sidebarOpen ? 'active' : ''}`}
-            title="Explorer"
-            onClick={() => handleActivityBarClick('explorer')}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
-            </svg>
+        {/* Activity Bar - Hidden on Mobile via CSS, but also conditionally rendered */}
+        {!isMobile && (
+          <div className="activity-bar">
+            <div
+              className={`activity-icon ${activeSidebarPanel === 'explorer' && sidebarOpen ? 'active' : ''}`}
+              title="Explorer"
+              onClick={() => handleActivityBarClick('explorer')}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
+              </svg>
+            </div>
+            <div
+              className={`activity-icon ${activeSidebarPanel === 'search' && sidebarOpen ? 'active' : ''}`}
+              title="Search"
+              onClick={() => handleActivityBarClick('search')}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+              </svg>
+            </div>
+            <div
+              className={`activity-icon ${activeSidebarPanel === 'source-control' && sidebarOpen ? 'active' : ''}`}
+              title="Source Control"
+              onClick={() => handleActivityBarClick('source-control')}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21.007 8.222A3.738 3.738 0 0 0 15.045 5.2a3.737 3.737 0 0 0 1.156 6.583 2.988 2.988 0 0 1-2.668 1.67h-2.99a4.456 4.456 0 0 0-2.989 1.165V7.4a3.737 3.737 0 1 0-1.494 0v9.117a3.776 3.776 0 1 0 1.816.099 2.99 2.99 0 0 1 2.668-1.667h2.99a4.484 4.484 0 0 0 4.223-3.039 3.736 3.736 0 0 0 3.25-3.687zM4.565 3.738a2.242 2.242 0 1 1 4.484 0 2.242 2.242 0 0 1-4.484 0zm4.484 16.441a2.242 2.242 0 1 1-4.484 0 2.242 2.242 0 0 1 4.484 0zm8.221-9.715a2.242 2.242 0 1 1 0-4.485 2.242 2.242 0 0 1 0 4.485z" />
+              </svg>
+            </div>
+            <div
+              className={`activity-icon ${activeSidebarPanel === 'debug' && sidebarOpen ? 'active' : ''}`}
+              title="Run and Debug"
+              onClick={() => handleActivityBarClick('debug')}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <div
+              className={`activity-icon ${activeSidebarPanel === 'extensions' && sidebarOpen ? 'active' : ''}`}
+              title="Extensions"
+              onClick={() => handleActivityBarClick('extensions')}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10.5 4.5c.28 0 .5.22.5.5v2h6v6h2c.28 0 .5.22.5.5s-.22.5-.5.5h-2v6h-2.12c-.68-1.75-2.39-3-4.38-3s-3.7 1.25-4.38 3H4v-2.12c1.75-.68 3-2.39 3-4.38 0-1.99-1.25-3.7-3-4.38V4h6V2c0-.28.22-.5.5-.5s.5.22.5.5v2h2V2c0-.28.22-.5.5-.5zM4 9c1.66 0 3 1.34 3 3s-1.34 3-3 3V9zm11 6c0-1.66 1.34-3 3-3v6c-1.66 0-3-1.34-3-3z" />
+              </svg>
+            </div>
           </div>
-          <div
-            className={`activity-icon ${activeSidebarPanel === 'search' && sidebarOpen ? 'active' : ''}`}
-            title="Search"
-            onClick={() => handleActivityBarClick('search')}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-            </svg>
-          </div>
-          <div
-            className={`activity-icon ${activeSidebarPanel === 'source-control' && sidebarOpen ? 'active' : ''}`}
-            title="Source Control"
-            onClick={() => handleActivityBarClick('source-control')}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M21.007 8.222A3.738 3.738 0 0 0 15.045 5.2a3.737 3.737 0 0 0 1.156 6.583 2.988 2.988 0 0 1-2.668 1.67h-2.99a4.456 4.456 0 0 0-2.989 1.165V7.4a3.737 3.737 0 1 0-1.494 0v9.117a3.776 3.776 0 1 0 1.816.099 2.99 2.99 0 0 1 2.668-1.667h2.99a4.484 4.484 0 0 0 4.223-3.039 3.736 3.736 0 0 0 3.25-3.687zM4.565 3.738a2.242 2.242 0 1 1 4.484 0 2.242 2.242 0 0 1-4.484 0zm4.484 16.441a2.242 2.242 0 1 1-4.484 0 2.242 2.242 0 0 1 4.484 0zm8.221-9.715a2.242 2.242 0 1 1 0-4.485 2.242 2.242 0 0 1 0 4.485z" />
-            </svg>
-          </div>
-          <div
-            className={`activity-icon ${activeSidebarPanel === 'debug' && sidebarOpen ? 'active' : ''}`}
-            title="Run and Debug"
-            onClick={() => handleActivityBarClick('debug')}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
-          <div
-            className={`activity-icon ${activeSidebarPanel === 'extensions' && sidebarOpen ? 'active' : ''}`}
-            title="Extensions"
-            onClick={() => handleActivityBarClick('extensions')}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10.5 4.5c.28 0 .5.22.5.5v2h6v6h2c.28 0 .5.22.5.5s-.22.5-.5.5h-2v6h-2.12c-.68-1.75-2.39-3-4.38-3s-3.7 1.25-4.38 3H4v-2.12c1.75-.68 3-2.39 3-4.38 0-1.99-1.25-3.7-3-4.38V4h6V2c0-.28.22-.5.5-.5s.5.22.5.5v2h2V2c0-.28.22-.5.5-.5zM4 9c1.66 0 3 1.34 3 3s-1.34 3-3 3V9zm11 6c0-1.66 1.34-3 3-3v6c-1.66 0-3-1.34-3-3z" />
-            </svg>
-          </div>
-        </div>
+        )}
 
-        {/* Sidebar */}
-        {sidebarOpen && (
+        {/* Sidebar - Hidden on Mobile */}
+        {!isMobile && sidebarOpen && (
           <div className="sidebar">
             <div className="sidebar-header">
               {activeSidebarPanel.toUpperCase().replace('-', ' ')}
@@ -467,21 +507,23 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`,
         {/* Main Editor */}
         <div className="main-content-area">
           <div className="editor-container">
-            {/* Tabs */}
-            <div className="tabs-container">
-              {openTabs.map((tab) => (
-                <div
-                  key={tab}
-                  className={`tab ${activeFile === tab ? 'active' : ''}`}
-                  onClick={() => handleTabClick(tab)}
-                >
-                  <span>{tab}</span>
-                  <span className="tab-close" onClick={(e) => handleTabClose(tab, e)}>
-                    ×
-                  </span>
-                </div>
-              ))}
-            </div>
+            {/* Tabs - Hidden on Mobile */}
+            {!isMobile && (
+              <div className="tabs-container">
+                {openTabs.map((tab) => (
+                  <div
+                    key={tab}
+                    className={`tab ${activeFile === tab ? 'active' : ''}`}
+                    onClick={() => handleTabClick(tab)}
+                  >
+                    <span>{tab}</span>
+                    <span className="tab-close" onClick={(e) => handleTabClose(tab, e)}>
+                      ×
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Editor Content */}
             {fileContents[activeFile] && (
@@ -493,13 +535,16 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`,
             )}
           </div>
 
-          {/* Terminal at bottom */}
-          <Terminal isOpen={terminalOpen} onClose={() => setTerminalOpen(false)} />
+          {/* Terminal at bottom - Hidden on Mobile */}
+          {!isMobile && <Terminal isOpen={terminalOpen} onClose={() => setTerminalOpen(false)} />}
         </div>
 
-        {/* Copilot Chat - Right Side Vertical */}
-        <CopilotChat isOpen={true} />
+        {/* Copilot Chat - Hidden on Mobile */}
+        {!isMobile && <CopilotChat isOpen={true} />}
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      {renderBottomNav()}
     </div>
   );
 }

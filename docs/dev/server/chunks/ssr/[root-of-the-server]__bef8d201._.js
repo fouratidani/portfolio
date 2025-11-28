@@ -1725,6 +1725,16 @@ function VSCodeLayout() {
     const [terminalOpen, setTerminalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [activeSidebarPanel, setActiveSidebarPanel] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('explorer');
+    const [isMobile, setIsMobile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Detect mobile on mount
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const checkMobile = ()=>{
+            setIsMobile(window.innerWidth <= 640);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return ()=>window.removeEventListener('resize', checkMobile);
+    }, []);
     const fileContents = {
         'README.md': {
             name: 'README.md',
@@ -1732,8 +1742,6 @@ function VSCodeLayout() {
             content: `# FOURAT IDANI
 
 ## Computer Science Graduate | Full-Stack Developer
-
-**On The Search For An End Of Studies Project Internship**
 
 📧 fouratidani2@gmail.com | 📱 +216 98 365 504  
 🔗 [github.com/fouratidani](https://github.com/fouratidani) | [linkedin.com/in/fourat-idani](https://linkedin.com/in/fourat-idani)
@@ -1811,27 +1819,33 @@ I approach every project with:
                             "React Native"
                         ],
                         "languages": [
+                            "TypeScript",
                             "JavaScript",
                             "HTML5",
                             "CSS3"
                         ],
                         "styling": [
-                            "Tailwind CSS"
+                            "Tailwind CSS",
+                            "Sass"
                         ]
                     },
                     "backend": {
                         "languages": [
                             "Node.js",
                             "PHP",
-                            "Java"
+                            "Java",
+                            "Python",
+                            "C/C++"
                         ],
                         "frameworks": [
                             "Express.js",
-                            "NestJS"
+                            "NestJS",
+                            "Spring Boot"
                         ],
                         "databases": [
-                            "SQL",
-                            "PostgreSQL"
+                            "PostgreSQL",
+                            "MySQL",
+                            "MongoDB"
                         ]
                     },
                     "mobile": {
@@ -1841,13 +1855,17 @@ I approach every project with:
                     "tools": {
                         "version_control": [
                             "Git",
-                            "GitHub"
+                            "GitHub",
+                            "GitLab"
                         ],
-                        "api_testing": [
-                            "Postman"
+                        "design": [
+                            "Figma",
+                            "Adobe XD"
                         ],
                         "other": [
-                            "VS Code"
+                            "VS Code",
+                            "Postman",
+                            "Docker"
                         ]
                     }
                 },
@@ -2064,7 +2082,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                     filterQuery: searchQuery
                 }, void 0, false, {
                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                    lineNumber: 334,
+                    lineNumber: 343,
                     columnNumber: 16
                 }, this);
             case 'search':
@@ -2077,7 +2095,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             children: "Search"
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 338,
+                            lineNumber: 347,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2096,7 +2114,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             }
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 339,
+                            lineNumber: 348,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2108,13 +2126,13 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             children: searchQuery ? `Filtering files by: "${searchQuery}"` : 'Enter search term to filter files'
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 354,
+                            lineNumber: 363,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                    lineNumber: 337,
+                    lineNumber: 346,
                     columnNumber: 11
                 }, this);
             case 'source-control':
@@ -2127,7 +2145,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             children: "Source Control"
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 362,
+                            lineNumber: 371,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2139,7 +2157,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             children: "Git repository information would appear here."
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 363,
+                            lineNumber: 372,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2151,7 +2169,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                     children: "📁 Portfolio Project"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 367,
+                                    lineNumber: 376,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2163,19 +2181,19 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                     children: "Branch: main"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 368,
+                                    lineNumber: 377,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 366,
+                            lineNumber: 375,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                    lineNumber: 361,
+                    lineNumber: 370,
                     columnNumber: 11
                 }, this);
             case 'debug':
@@ -2188,7 +2206,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             children: "Run and Debug"
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 377,
+                            lineNumber: 386,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2200,13 +2218,13 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             children: "Debug configurations would appear here."
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 378,
+                            lineNumber: 387,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                    lineNumber: 376,
+                    lineNumber: 385,
                     columnNumber: 11
                 }, this);
             case 'extensions':
@@ -2219,7 +2237,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             children: "Extensions"
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 386,
+                            lineNumber: 395,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2231,7 +2249,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             children: "Recommended extensions:"
                         }, void 0, false, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 387,
+                            lineNumber: 396,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -2245,59 +2263,154 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                     children: "ESLint"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 391,
+                                    lineNumber: 400,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                     children: "Prettier"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 392,
+                                    lineNumber: 401,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                     children: "GitLens"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 393,
+                                    lineNumber: 402,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                     children: "Tailwind CSS IntelliSense"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 394,
+                                    lineNumber: 403,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/VSCodeLayout.tsx",
-                            lineNumber: 390,
+                            lineNumber: 399,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                    lineNumber: 385,
+                    lineNumber: 394,
                     columnNumber: 11
                 }, this);
         }
     };
+    const renderBottomNav = ()=>{
+        if (!isMobile) return null;
+        const navItems = [
+            {
+                name: 'Home',
+                file: 'README.md',
+                icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                }, void 0, false, {
+                    fileName: "[project]/app/components/VSCodeLayout.tsx",
+                    lineNumber: 414,
+                    columnNumber: 48
+                }, this)
+            },
+            {
+                name: 'About',
+                file: 'about.md',
+                icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                }, void 0, false, {
+                    fileName: "[project]/app/components/VSCodeLayout.tsx",
+                    lineNumber: 415,
+                    columnNumber: 48
+                }, this)
+            },
+            {
+                name: 'Skills',
+                file: 'skills.json',
+                icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                }, void 0, false, {
+                    fileName: "[project]/app/components/VSCodeLayout.tsx",
+                    lineNumber: 416,
+                    columnNumber: 52
+                }, this)
+            },
+            {
+                name: 'Work',
+                file: 'projects.tsx',
+                icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"
+                }, void 0, false, {
+                    fileName: "[project]/app/components/VSCodeLayout.tsx",
+                    lineNumber: 417,
+                    columnNumber: 51
+                }, this)
+            },
+            {
+                name: 'Contact',
+                file: 'contact.ts',
+                icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                }, void 0, false, {
+                    fileName: "[project]/app/components/VSCodeLayout.tsx",
+                    lineNumber: 418,
+                    columnNumber: 52
+                }, this)
+            }
+        ];
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "mobile-bottom-nav",
+            children: navItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: `mobile-nav-item ${activeFile === item.file ? 'active' : ''}`,
+                    onClick: ()=>setActiveFile(item.file),
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                            viewBox: "0 0 24 24",
+                            width: "24",
+                            height: "24",
+                            fill: "currentColor",
+                            children: item.icon
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/VSCodeLayout.tsx",
+                            lineNumber: 429,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            children: item.name
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/VSCodeLayout.tsx",
+                            lineNumber: 432,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, item.file, true, {
+                    fileName: "[project]/app/components/VSCodeLayout.tsx",
+                    lineNumber: 424,
+                    columnNumber: 11
+                }, this))
+        }, void 0, false, {
+            fileName: "[project]/app/components/VSCodeLayout.tsx",
+            lineNumber: 422,
+            columnNumber: 7
+        }, this);
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "vscode-wrapper",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$MenuBar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+            !isMobile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$MenuBar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                 onMenuAction: handleMenuAction,
                 onSearch: handleSearch
             }, void 0, false, {
                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                lineNumber: 403,
-                columnNumber: 7
+                lineNumber: 441,
+                columnNumber: 21
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "vscode-container",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    !isMobile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "activity-bar",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2313,18 +2426,18 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                         d: "M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                        lineNumber: 414,
-                                        columnNumber: 15
+                                        lineNumber: 453,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 413,
-                                    columnNumber: 13
+                                    lineNumber: 452,
+                                    columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 408,
-                                columnNumber: 11
+                                lineNumber: 447,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: `activity-icon ${activeSidebarPanel === 'search' && sidebarOpen ? 'active' : ''}`,
@@ -2339,18 +2452,18 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                         d: "M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                        lineNumber: 423,
-                                        columnNumber: 15
+                                        lineNumber: 462,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 422,
-                                    columnNumber: 13
+                                    lineNumber: 461,
+                                    columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 417,
-                                columnNumber: 11
+                                lineNumber: 456,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: `activity-icon ${activeSidebarPanel === 'source-control' && sidebarOpen ? 'active' : ''}`,
@@ -2365,18 +2478,18 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                         d: "M21.007 8.222A3.738 3.738 0 0 0 15.045 5.2a3.737 3.737 0 0 0 1.156 6.583 2.988 2.988 0 0 1-2.668 1.67h-2.99a4.456 4.456 0 0 0-2.989 1.165V7.4a3.737 3.737 0 1 0-1.494 0v9.117a3.776 3.776 0 1 0 1.816.099 2.99 2.99 0 0 1 2.668-1.667h2.99a4.484 4.484 0 0 0 4.223-3.039 3.736 3.736 0 0 0 3.25-3.687zM4.565 3.738a2.242 2.242 0 1 1 4.484 0 2.242 2.242 0 0 1-4.484 0zm4.484 16.441a2.242 2.242 0 1 1-4.484 0 2.242 2.242 0 0 1 4.484 0zm8.221-9.715a2.242 2.242 0 1 1 0-4.485 2.242 2.242 0 0 1 0 4.485z"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                        lineNumber: 432,
-                                        columnNumber: 15
+                                        lineNumber: 471,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 431,
-                                    columnNumber: 13
+                                    lineNumber: 470,
+                                    columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 426,
-                                columnNumber: 11
+                                lineNumber: 465,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: `activity-icon ${activeSidebarPanel === 'debug' && sidebarOpen ? 'active' : ''}`,
@@ -2391,18 +2504,18 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                         d: "M8 5v14l11-7z"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                        lineNumber: 441,
-                                        columnNumber: 15
+                                        lineNumber: 480,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 440,
-                                    columnNumber: 13
+                                    lineNumber: 479,
+                                    columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 435,
-                                columnNumber: 11
+                                lineNumber: 474,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: `activity-icon ${activeSidebarPanel === 'extensions' && sidebarOpen ? 'active' : ''}`,
@@ -2417,26 +2530,26 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                         d: "M10.5 4.5c.28 0 .5.22.5.5v2h6v6h2c.28 0 .5.22.5.5s-.22.5-.5.5h-2v6h-2.12c-.68-1.75-2.39-3-4.38-3s-3.7 1.25-4.38 3H4v-2.12c1.75-.68 3-2.39 3-4.38 0-1.99-1.25-3.7-3-4.38V4h6V2c0-.28.22-.5.5-.5s.5.22.5.5v2h2V2c0-.28.22-.5.5-.5zM4 9c1.66 0 3 1.34 3 3s-1.34 3-3 3V9zm11 6c0-1.66 1.34-3 3-3v6c-1.66 0-3-1.34-3-3z"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                        lineNumber: 450,
-                                        columnNumber: 15
+                                        lineNumber: 489,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                    lineNumber: 449,
-                                    columnNumber: 13
+                                    lineNumber: 488,
+                                    columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 444,
-                                columnNumber: 11
+                                lineNumber: 483,
+                                columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                        lineNumber: 407,
-                        columnNumber: 9
+                        lineNumber: 446,
+                        columnNumber: 11
                     }, this),
-                    sidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    !isMobile && sidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "sidebar",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2444,7 +2557,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                 children: activeSidebarPanel.toUpperCase().replace('-', ' ')
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 458,
+                                lineNumber: 498,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2452,13 +2565,13 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                 children: renderSidebarContent()
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 461,
+                                lineNumber: 501,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                        lineNumber: 457,
+                        lineNumber: 497,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2467,7 +2580,7 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "editor-container",
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    !isMobile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "tabs-container",
                                         children: openTabs.map((tab)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: `tab ${activeFile === tab ? 'active' : ''}`,
@@ -2477,8 +2590,8 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                                         children: tab
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                                        lineNumber: 478,
-                                                        columnNumber: 19
+                                                        lineNumber: 519,
+                                                        columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "tab-close",
@@ -2486,19 +2599,19 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                                         children: "×"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                                        lineNumber: 479,
-                                                        columnNumber: 19
+                                                        lineNumber: 520,
+                                                        columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, tab, true, {
                                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                                lineNumber: 473,
-                                                columnNumber: 17
+                                                lineNumber: 514,
+                                                columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                        lineNumber: 471,
-                                        columnNumber: 13
+                                        lineNumber: 512,
+                                        columnNumber: 15
                                     }, this),
                                     fileContents[activeFile] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$CodeEditor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                         fileName: activeFile,
@@ -2506,46 +2619,47 @@ export { contactInfo, socialLinks, preferredContactMethods, interests };`
                                         language: fileContents[activeFile].language
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                        lineNumber: 488,
+                                        lineNumber: 530,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 469,
+                                lineNumber: 509,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Terminal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            !isMobile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Terminal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 isOpen: terminalOpen,
                                 onClose: ()=>setTerminalOpen(false)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                                lineNumber: 497,
-                                columnNumber: 11
+                                lineNumber: 539,
+                                columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                        lineNumber: 468,
+                        lineNumber: 508,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$CopilotChat$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    !isMobile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$CopilotChat$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         isOpen: true
                     }, void 0, false, {
                         fileName: "[project]/app/components/VSCodeLayout.tsx",
-                        lineNumber: 501,
-                        columnNumber: 9
+                        lineNumber: 543,
+                        columnNumber: 23
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/VSCodeLayout.tsx",
-                lineNumber: 405,
+                lineNumber: 443,
                 columnNumber: 7
-            }, this)
+            }, this),
+            renderBottomNav()
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/VSCodeLayout.tsx",
-        lineNumber: 402,
+        lineNumber: 440,
         columnNumber: 5
     }, this);
 }

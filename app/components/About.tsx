@@ -29,16 +29,16 @@ export default function About() {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                             <div className="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 hover:shadow-lg transition-shadow">
-                                <div className="text-4xl font-bold text-blue-600 mb-2">5+</div>
-                                <div className="text-gray-700 font-medium">Years Experience</div>
+                                <div className="text-4xl font-bold text-blue-600 mb-2">3+</div>
+                                <div className="text-gray-700 font-medium">Internships</div>
                             </div>
                             <div className="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 hover:shadow-lg transition-shadow">
-                                <div className="text-4xl font-bold text-purple-600 mb-2">50+</div>
-                                <div className="text-gray-700 font-medium">Projects Completed</div>
+                                <div className="text-4xl font-bold text-purple-600 mb-2">10+</div>
+                                <div className="text-gray-700 font-medium">Projects</div>
                             </div>
                             <div className="text-center p-6 rounded-xl bg-gradient-to-br from-green-50 to-green-100 hover:shadow-lg transition-shadow">
-                                <div className="text-4xl font-bold text-green-600 mb-2">30+</div>
-                                <div className="text-gray-700 font-medium">Happy Clients</div>
+                                <div className="text-4xl font-bold text-green-600 mb-2">100%</div>
+                                <div className="text-gray-700 font-medium">Commitment</div>
                             </div>
                         </div>
                     </div>
